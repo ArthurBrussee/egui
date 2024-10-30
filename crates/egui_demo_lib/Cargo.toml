@@ -12,11 +12,11 @@ repository = "https://github.com/emilk/egui/tree/master/crates/egui_demo_lib"
 categories = ["gui", "graphics"]
 keywords = ["glium", "egui", "gui", "gamedev"]
 include = [
-    "../LICENSE-APACHE",
-    "../LICENSE-MIT",
-    "**/*.rs",
-    "Cargo.toml",
-    "data/icon.png",
+  "../LICENSE-APACHE",
+  "../LICENSE-MIT",
+  "**/*.rs",
+  "Cargo.toml",
+  "data/icon.png",
 ]
 
 [lints]
@@ -48,7 +48,10 @@ egui_extras = { workspace = true, features = ["default"] }
 unicode_names2 = { version = "0.6.0", default-features = false } # this old version has fewer dependencies
 
 #! ### Optional dependencies
-chrono = { version = "0.4", optional = true, features = ["js-sys", "wasmbind"] }
+chrono = { version = "0.4.38", optional = true, features = [
+  "js-sys",
+  "wasmbind",
+] }
 ## Enable this when generating docs.
 document-features = { workspace = true, optional = true }
 serde = { workspace = true, optional = true }

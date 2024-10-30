@@ -2,9 +2,9 @@
 name = "egui_extras"
 version.workspace = true
 authors = [
-  "Dominik Rössler <dominik@freshx.de>",
-  "Emil Ernerfeldt <emil.ernerfeldt@gmail.com>",
-  "René Rössler <rene@freshx.de>",
+    "Dominik Rössler <dominik@freshx.de>",
+    "Emil Ernerfeldt <emil.ernerfeldt@gmail.com>",
+    "René Rössler <rene@freshx.de>",
 ]
 description = "Extra functionality and widgets for the egui GUI library"
 edition.workspace = true
@@ -82,10 +82,10 @@ serde = { workspace = true, optional = true }
 
 # Date operations needed for datepicker widget
 chrono = { version = "0.4", optional = true, default-features = false, features = [
-  "clock",
-  "js-sys",
-  "std",
-  "wasmbind",
+    "clock",
+    "js-sys",
+    "std",
+    "wasmbind",
 ] }
 
 ## Enable this when generating docs.
@@ -98,8 +98,8 @@ mime_guess2 = { version = "2", optional = true, default-features = false }
 
 puffin = { workspace = true, optional = true }
 
-syntect = { version = "5", optional = true, default-features = false, features = [
-  "default-fancy",
+syntect = { version = "5.2", optional = true, default-features = false, features = [
+    "default-fancy",
 ] }
 
 # svg feature

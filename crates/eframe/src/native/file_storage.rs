@@ -58,25 +58,26 @@ fn roaming_appdata() -> Option<PathBuf> {
     extern "C" {
         fn wcslen(buf: *const u16) -> usize;
     }
+
+    let mut path = ptr::null_mut();
+
+    // Safety: FFI call, windows-sys upholds invariants.
     unsafe {
-        let mut path = ptr::null_mut();
-        match SHGetKnownFolderPath(
+        if SHGetKnownFolderPath(
             &FOLDERID_RoamingAppData,
             KF_FLAG_DONT_VERIFY as u32,
-            0,
+            std::ptr::null_mut(),
             &mut path,
-        ) {
-            S_OK => {
-                let path_slice = slice::from_raw_parts(path, wcslen(path));
-                let s = OsString::from_wide(&path_slice);
-                CoTaskMemFree(path.cast());
-                Some(PathBuf::from(s))
-            }
-            _ => {
-                // Free any allocated memory even on failure. A null ptr is a no-op for `CoTaskMemFree`.
-                CoTaskMemFree(path.cast());
-                None
-            }
+        ) == S_OK
+        {
+            let path_slice = slice::from_raw_parts(path, wcslen(path));
+            let s = OsString::from_wide(path_slice);
+            CoTaskMemFree(path.cast());
+            Some(PathBuf::from(s))
+        } else {
+            // Free any allocated memory even on failure. A null ptr is a no-op for `CoTaskMemFree`.
+            CoTaskMemFree(path.cast());
+            None
         }
     }
 }

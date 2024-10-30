@@ -27,7 +27,12 @@ web_app = ["http", "persistence"]
 
 http = ["ehttp", "image", "poll-promise", "egui_extras/image"]
 image_viewer = ["image", "egui_extras/all_loaders", "rfd"]
-persistence = ["eframe/persistence", "egui/persistence", "serde", "egui_extras/serde"]
+persistence = [
+  "eframe/persistence",
+  "egui/persistence",
+  "serde",
+  "egui_extras/serde",
+]
 puffin = ["eframe/puffin", "dep:puffin", "dep:puffin_http"]
 serde = ["dep:serde", "egui_demo_lib/serde", "egui/serde"]
 syntect = ["egui_demo_lib/syntect"]
@@ -38,7 +43,7 @@ wayland = ["eframe/wayland"]
 x11 = ["eframe/x11"]
 
 [dependencies]
-chrono = { version = "0.4", default-features = false, features = [
+chrono = { version = "0.4.38", default-features = false, features = [
   "js-sys",
   "wasmbind",
 ] }
@@ -78,6 +83,6 @@ rfd = { version = "0.13", optional = true }
 
 # web:
 [target.'cfg(target_arch = "wasm32")'.dependencies]
-wasm-bindgen = "=0.2.93"
+wasm-bindgen = "=0.2.95"
 wasm-bindgen-futures.workspace = true
 web-sys.workspace = true
