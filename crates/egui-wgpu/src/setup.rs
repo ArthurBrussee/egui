@@ -68,7 +68,7 @@ impl WgpuSetup {
 
                 #[allow(clippy::arc_with_non_send_sync)]
                 Arc::new(
-                    wgpu::util::new_instance_with_webgpu_detection(wgpu::InstanceDescriptor {
+                    wgpu::util::new_instance_with_webgpu_detection(&wgpu::InstanceDescriptor {
                         backends: create_new.instance_descriptor.backends,
                         flags: create_new.instance_descriptor.flags,
                         dx12_shader_compiler: create_new
